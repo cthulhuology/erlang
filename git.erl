@@ -13,7 +13,7 @@ init() ->
 	io:format("~s" , [ os:cmd("git init .") ]).
 
 commit(Message) ->
-	io:format("~s" , [ os:cmd("git commit -a -m '" ++ Message ++ "'") ]).
+	io:format("~s" , [ os:cmd("git commit -a -m \"" ++ Message ++ "\"") ]).
 
 add(File)  ->
 	io:format("~s", [ os:cmd("git add " ++ File) ]).
