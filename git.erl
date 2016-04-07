@@ -4,8 +4,12 @@
 	commit/1, 
 	add/1,
 	push/0, pull/0, pull/1, 
+	delete/1,
 	checkout/1,
-	status/0, log/0
+	feature/1,	
+	merge/1,
+	status/0, log/0,
+	branch/0
 	]).
 
 
@@ -28,7 +32,13 @@ pull(Origin) ->
 	io:format("~s", [ os:cmd("git pull " ++ Origin)]).
 
 checkout(Branch) ->
+	io:format("~s", [ os:cmd("git checkout " ++ Branch)]).
+
+feature(Branch) ->
 	io:format("~s", [ os:cmd("git checkout -b " ++ Branch)]).
+
+delete(Branch) ->
+	io:format("~s", [ os:cmd("git branch -D " ++ Branch)]).
 
 status() ->
 	io:format("~s", [ os:cmd("git status") ]).
@@ -36,4 +46,5 @@ status() ->
 log() ->
 	io:format("~s", [ os:cmd("git log") ]).
 
-
+branch() ->
+	io:format("~s", [ os:cmd("git branch") ]).
