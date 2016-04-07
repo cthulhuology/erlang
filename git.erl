@@ -1,5 +1,6 @@
 -module(git).
 -export([ 
+	clone/1,
 	init/0, 
 	commit/1, 
 	add/1,
@@ -14,6 +15,9 @@
 	diff/1
 	]).
 
+
+clone(Url) ->
+	io:format("~s", [ os:cmd("git clone " ++ Url) ]).
 
 init() ->
 	io:format("~s" , [ os:cmd("git init .") ]).
