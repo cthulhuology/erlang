@@ -5,7 +5,7 @@
 	add/1,
 	push/0, pull/0, pull/1, 
 	checkout/1,
-	status/0
+	status/0, log/0
 	]).
 
 
@@ -33,4 +33,7 @@ checkout(Branch) ->
 status() ->
 	io:format("~s", [ os:cmd("git status") ]).
 	
+log() ->
+	io:format("~s", [ os:cmd("git log") ]).
+
 
