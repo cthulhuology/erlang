@@ -1,0 +1,5 @@
+c:cd("C:/Users/dave/Erlang").
+code:add_patha("C:/Users/dave/Erlang").
+code:add_patha("C:/Users/dave/Erlang/ebin").
+c:l(user_default).
+c:l(git).
