@@ -22,7 +22,7 @@ vi(X) when is_list(X) ->
 	os:cmd("gvim " ++ X ).
 
 home() ->
-	c:cd("c:/Users/dave/Erlang").
+	c:cd(os:getenv("USERPROFILE") ++ "/Erlang").
 
 
 git_clone(Url) ->
