@@ -73,5 +73,5 @@ git_diff(Tag) ->
 	io:format("~s", [ os:cmd("git diff " ++ Tag) ]).
 
 lm() ->
-	{ ok, Files } = file:list_dir("C:/Users/David/Erlang"),
-	[ code:add_pathz( "C:/Users/David/Erlang/" ++ X ++ "/ebin" ) || X <- lists:filtermap( fun(Y) -> filelib:is_dir(Y ++ "/ebin") end, Files) ].
+	{ ok, Files } = file:list_dir(os:getenv("USERPROFILE") ++ "\\Erlang\\" ),
+	[ code:add_pathz(os:getenv("USERPROFILE") ++ "\\Erlang\\" ++ X ++ "\\ebin" ) || X <- lists:filtermap( fun(Y) -> filelib:is_dir(os:getenv("USERPROFILE") ++ "\\Erlang\\" ++ Y ++ "\\ebin") end, Files) ].
