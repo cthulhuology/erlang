@@ -1,5 +1,5 @@
 -module(user_default).
--export([ vi/1 , home/0,
+-export([ vi/1 , home/0, lm/0,
 	git_clone/1,
 	git_init/0, 
 	git_commit/1, 
@@ -15,11 +15,10 @@
 	git_diff/1
 	]).
 
-
 vi(X) when is_atom(X) ->
-	vi(atom_to_list(X));
+	vi(atom_to_list(X) ++ ".erl");
 vi(X) when is_list(X) ->
-	os:cmd("gvim " ++ X ).
+	spawn(os,cmd, [ "gvim " ++ X ]).
 
 home() ->
 	c:cd(os:getenv("USERPROFILE") ++ "/Erlang").
@@ -72,3 +71,7 @@ git_branch() ->
 
 git_diff(Tag) ->
 	io:format("~s", [ os:cmd("git diff " ++ Tag) ]).
+
+lm() ->
+	{ ok, Files } = file:list_dir("C:/Users/David/Erlang"),
+	[ code:add_pathz( "C:/Users/David/Erlang/" ++ X ++ "/ebin" ) || X <- lists:filtermap( fun(Y) -> filelib:is_dir(Y ++ "/ebin") end, Files) ].
